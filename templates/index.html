@@ -7,10 +7,9 @@
 </head>
 <body>
     <h1>AI Image Query System</h1>
-    <form id="aiForm">
-        <label for="image_choice">Select Image:</label><br>
-        <input type="radio" name="image_choice" value="circuit" required> Circuit
-        <input type="radio" name="image_choice" value="firefighter" required> Firefighter<br><br>
+    <form id="aiForm" enctype="multipart/form-data">
+        <label for="image">Upload an Image:</label><br>
+        <input type="file" id="image" name="image" accept="image/*" required><br><br>
 
         <label for="query">Ask a question about the image:</label><br>
         <input type="text" id="query" name="query" required><br><br>
