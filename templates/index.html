@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>AI Image Query System</h1>
-    <form action="/ask" method="POST">
+    <form id="aiForm">
         <label for="image_choice">Select Image:</label><br>
         <input type="radio" name="image_choice" value="circuit" required> Circuit
         <input type="radio" name="image_choice" value="firefighter" required> Firefighter<br><br>
@@ -17,5 +17,33 @@
 
         <input type="submit" value="Get AI Response">
     </form>
+
+    <h2>AI Response:</h2>
+    <div id="response" style="white-space: pre-wrap; border: 1px solid #ccc; padding: 10px;"></div>
+
+    <script>
+        // Handle form submission without reloading the page
+        document.getElementById("aiForm").addEventListener("submit", async function(event) {
+            event.preventDefault(); // Prevent form from refreshing the page
+
+            const formData = new FormData(event.target);
+
+            // Make a POST request to the server
+            const response = await fetch("/ask", {
+                method: "POST",
+                body: formData,
+            });
+
+            const data = await response.json(); // Get the server's JSON response
+
+            // Render the response, replacing \n with actual line breaks
+            const responseDiv = document.getElementById("response");
+            if (data.ai_response) {
+                responseDiv.innerHTML = data.ai_response.replace(/\n/g, "<br>");
+            } else if (data.error) {
+                responseDiv.textContent = `Error: ${data.error}`;
+            }
+        });
+    </script>
 </body>
 </html>
