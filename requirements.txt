@@ -2,3 +2,5 @@ flask
 gunicorn
 google-generativeai
 httpx
+pillow
+python-dotenv
