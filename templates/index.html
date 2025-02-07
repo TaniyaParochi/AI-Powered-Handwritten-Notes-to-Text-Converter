@@ -3,10 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Captioning</title>
+    <title>AI Image Query</title>
 </head>
 <body>
-    <h1>Generated Caption:</h1>
-    <p>{{ caption }}</p>
+    <h1>AI Image Query System</h1>
+    <form action="/ask" method="POST">
+        <label for="image_choice">Select Image:</label><br>
+        <input type="radio" name="image_choice" value="circuit" required> Circuit
+        <input type="radio" name="image_choice" value="firefighter" required> Firefighter<br><br>
+
+        <label for="query">Ask a question about the image:</label><br>
+        <input type="text" id="query" name="query" required><br><br>
+
+        <input type="submit" value="Get AI Response">
+    </form>
 </body>
 </html>
