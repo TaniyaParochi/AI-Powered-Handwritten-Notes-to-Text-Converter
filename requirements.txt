@@ -3,4 +3,9 @@ gunicorn
 google-generativeai
 httpx
 pillow
+flask
+gunicorn
+google-generativeai
+httpx
+pillow
 python-dotenv
